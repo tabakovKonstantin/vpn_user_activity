@@ -1,0 +1,17 @@
+services:
+  vpn_user_activity:
+    build: .
+    container_name: rpi_vpn_user_activity
+    restart: unless-stopped
+    volumes:
+      - /var/run/charon.vici:/var/run/charon.vici
+    ports:
+      - 9101:9101
+    networks:
+      - vpn
+
+
+networks:
+  vpn:
+    name: vpn
+    external: true
